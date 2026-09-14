@@ -1,0 +1,566 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+
+.jogo-container {
+  min-height: 100vh;
+
+  padding: 35px 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 91, 91, 0.25),
+      rgba(255, 91, 91, 0.25)
+    ),
+    url("../../public/dados/background-img.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: #ffffff;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.titulo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.titulo-dado {
+  font-size: 55px;
+}
+
+.cabecalho h1 {
+  margin: 0;
+
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 900;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 4px 0 #a92d2d,
+    0 7px 15px rgba(100, 0, 0, 0.35);
+}
+
+.cabecalho p {
+  margin: 8px 0 0;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  text-shadow: 0 2px 5px rgba(80, 0, 0, 0.4);
+}
+
+
+/* =========================
+   PLACAR
+========================= */
+
+.placar {
+  width: min(980px, 100%);
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(145, 25, 25, 0.88);
+
+  border-radius: 18px;
+
+  padding: 15px 28px;
+
+  margin-bottom: 28px;
+
+  box-shadow:
+    0 8px 25px rgba(100, 0, 0, 0.25);
+
+  backdrop-filter: blur(8px);
+}
+
+.placar-jogador {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.placar-jogador div,
+.empates div {
+  display: flex;
+  flex-direction: column;
+}
+
+.placar-jogador span,
+.empates span {
+  font-size: 14px;
+}
+
+.placar-jogador strong,
+.empates strong {
+  font-size: 25px;
+}
+
+.icone-placar {
+  font-size: 30px;
+}
+
+.rodada-atual {
+  background: #ed4545;
+
+  padding: 12px 25px;
+
+  border-radius: 30px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.empates {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* =========================
+   JOGADORES
+========================= */
+
+.jogadores {
+  width: min(1050px, 100%);
+
+  display: grid;
+
+  grid-template-columns: 1fr 180px 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+/* =========================
+   CARD DO JOGADOR
+========================= */
+
+.card-jogador {
+  background: rgba(255, 248, 248, 0.94);
+
+  color: #a92d2d;
+
+  border-radius: 22px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 10px 30px rgba(100, 0, 0, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+  border: 3px solid transparent;
+}
+
+.card-jogador.jogador-ativo {
+  border-color: #ff4d4d;
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 35px rgba(120, 0, 0, 0.25);
+}
+
+.card-jogador:not(.jogador-ativo) {
+  opacity: 0.78;
+}
+
+
+/* =========================
+   NOME DO JOGADOR
+========================= */
+
+.nome-jogador {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.nome-jogador h2 {
+  margin: 0;
+
+  font-size: 23px;
+}
+
+.numero-jogador {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e53939;
+
+  color: white;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.numero-2 {
+  background: #dc5b5b;
+}
+
+
+/* =========================
+   DADOS
+========================= */
+
+.dados {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.dado {
+  width: 125px;
+  height: 125px;
+
+  object-fit: contain;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 15px rgba(100, 0, 0, 0.15);
+}
+
+
+/* =========================
+   SOMA
+========================= */
+
+.soma {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background: #ffe0e0;
+
+  border-radius: 30px;
+
+  padding: 10px;
+
+  margin-bottom: 18px;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.soma strong {
+  font-size: 28px;
+
+  color: #d83232;
+}
+
+
+/* =========================
+   BOTÃO JOGAR
+========================= */
+
+.botao-jogar {
+  width: 100%;
+
+  border: none;
+
+  border-radius: 35px;
+
+  padding: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #ff5151,
+    #df2929
+  );
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(190, 20, 20, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.botao-jogar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.botao-jogar:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.botao-jogar:disabled {
+  background: #d99a9a;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================
+   MENSAGEM CENTRAL
+========================= */
+
+.mensagem-central {
+  text-align: center;
+
+  font-weight: 700;
+
+  color: white;
+
+  text-shadow:
+    0 2px 5px rgba(100, 0, 0, 0.5);
+}
+
+.dados-icone {
+  font-size: 42px;
+
+  margin-bottom: 10px;
+}
+
+.mensagem-central p {
+  line-height: 1.5;
+
+  font-size: 17px;
+
+  margin: 0;
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+.resultado {
+  width: min(850px, 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  background: rgba(145, 25, 25, 0.88);
+
+  border-radius: 18px;
+
+  padding: 18px 25px;
+
+  margin-top: 30px;
+
+  box-shadow:
+    0 8px 25px rgba(100, 0, 0, 0.2);
+
+  text-align: center;
+}
+
+.resultado-icone {
+  font-size: 35px;
+}
+
+.resultado div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.resultado strong {
+  font-size: 20px;
+}
+
+.resultado span {
+  font-size: 15px;
+
+  opacity: 0.9;
+}
+
+
+/* =========================
+   JOGAR NOVAMENTE
+========================= */
+
+.botao-novamente {
+  margin-top: 25px;
+
+  padding: 13px 35px;
+
+  border-radius: 35px;
+
+  border: 2px solid white;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.botao-novamente:hover {
+  background: white;
+
+  color: #c52f2f;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 850px) {
+
+  .jogadores {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mensagem-central {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .card-jogador {
+    width: 100%;
+  }
+
+  .placar {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .rodada-atual {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .jogo-container {
+    padding: 25px 15px;
+  }
+
+  .titulo-dado {
+    font-size: 40px;
+  }
+
+  .cabecalho h1 {
+    font-size: 38px;
+  }
+
+  .cabecalho p {
+    font-size: 15px;
+  }
+
+  .placar {
+    padding: 15px;
+  }
+
+  .placar-jogador {
+    font-size: 14px;
+  }
+
+  .jogadores {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-jogador {
+    width: 100%;
+  }
+
+  .mensagem-central {
+    order: -1;
+  }
+
+  .dado {
+    width: 100px;
+    height: 100px;
+  }
+
+  .resultado {
+    margin-top: 20px;
+  }
+}
